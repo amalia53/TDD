@@ -76,7 +76,7 @@ function createApp(database) {
   }
 
   function isMonday(date) {
-    return date.getDay() === 1;
+    return convertDate(date).dayOfWeek === 1;
   }
 
   function convertDate(date) {
