@@ -91,7 +91,6 @@ function createApp(database) {
     const holidays = database.getHolidays();
     for (let row of holidays) {
       let holiday = Temporal.PlainDate.from(row.holiday)
-      let formattedHoliday = Temporal.PlainDate.from(row.holiday)
       if (
         convertDate(date) &&
         convertDate(date).year === holiday.year &&
