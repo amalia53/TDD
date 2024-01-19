@@ -92,7 +92,6 @@ function createApp(database) {
     for (let row of holidays) {
       let holiday = new Date(row.holiday);
       let formattedHoliday = Temporal.PlainDate.from(row.holiday)
-      let formatted = convertDate(date)
       if (
         convertDate(date) &&
         convertDate(date).year === formattedHoliday.year &&
