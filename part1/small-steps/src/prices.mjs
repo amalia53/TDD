@@ -95,7 +95,7 @@ function createApp(database) {
       let formatted = convertDate(date)
       if (
         convertDate(date) &&
-        formatted.year === formattedHoliday.year &&
+        convertDate(date).year === formattedHoliday.year &&
         formatted.month === formattedHoliday.month &&
         formatted.day === formattedHoliday.day
       ) {
