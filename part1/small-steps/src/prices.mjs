@@ -96,7 +96,7 @@ function createApp(database) {
         convertDate(date) &&
         convertDate(date).year === holiday.year &&
         convertDate(date).month === holiday.month &&
-        convertDate(date).day === formattedHoliday.day
+        convertDate(date).day === holiday.day
       ) {
         return true;
       }
