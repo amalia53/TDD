@@ -1,5 +1,5 @@
 # Test Driven Development
 
-### Excercises
+### Part 1
 
-[part 1](https://github.com/amalia53/TDD/part1)
+[small steps](https://github.com/amalia53/TDD/tree/main/part1/small-steps)
