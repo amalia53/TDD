@@ -81,7 +81,7 @@ function createApp(database) {
 
   function convertDate(date) {
     if (date instanceof Date) {
-    return (date.toISOString().split('T')[0])
+      return (date.toISOString().split('T')[0])
     }
   }
 
