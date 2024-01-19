@@ -80,8 +80,7 @@ function createApp(database) {
   }
 
   function convertDate(date) {
-    if (date instanceof Date) {
-      return Temporal.PlainDate.from(date.toISOString().split('T')[0])   
+    if (date instanceof Date) {   
     }
   }
 
