@@ -80,7 +80,8 @@ function createApp(database) {
   }
 
   function convertDate(date) {
-  return (date.toISOString().split('T')[0])}
+  return (date.toISOString().split('T')[0])
+}
 
   function isHoliday(date) {
     const holidays = database.getHolidays();
