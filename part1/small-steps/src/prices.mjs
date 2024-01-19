@@ -69,7 +69,7 @@ function createApp(database) {
 
   function calculateReduction(date) {
     let reduction = 0;
-    if (date && isMonday(convertDate(date)) && !isHoliday(date)) {
+    if (date && isMonday(convertDate(date)) && !isHoliday(convertDate(date))) {
       reduction = 35;
     }
     return reduction;
@@ -91,7 +91,7 @@ function createApp(database) {
     const holidays = database.getHolidays();
     for (let row of holidays) {
       let holiday = Temporal.PlainDate.from(row.holiday)
-      let formatted = convertDate(date)
+      let formatted = date
       if (
         formatted &&
         formatted.year === holiday.year &&
