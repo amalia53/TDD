@@ -94,7 +94,7 @@ function createApp(database) {
       let formattedHoliday = Temporal.PlainDate.from(row.holiday)
       let formatted = convertDate(date)
       if (
-        formatted &&
+        convertDate(date) &&
         formatted.year === formattedHoliday.year &&
         formatted.month === formattedHoliday.month &&
         formatted.day === formattedHoliday.day
