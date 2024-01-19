@@ -80,8 +80,6 @@ function createApp(database) {
   }
 
   function convertDate(date) {
-    if (date instanceof Date) {   
-    }
   }
 
   function isHoliday(date) {
