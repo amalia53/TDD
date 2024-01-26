@@ -35,4 +35,8 @@ export class Board {
   tick() {
     this.pos = [this.pos[0], this.pos[1] + 1];
   }
+
+  hasFalling() {
+    return this.pos[1] < this.height
+  }
 }
