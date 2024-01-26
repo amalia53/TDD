@@ -27,4 +27,8 @@ export class Board {
   drop(shape) {
     this.pos = [1, 0]
   }
+
+  tick() {
+    this.pos = [this.pos[0], this.pos[1] + 1];
+  }
 }
