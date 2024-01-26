@@ -14,18 +14,22 @@ export class Board {
     for (let y = 0; y < this.height; y++) {
       for (let x = 0; x < this.width; x++) {
         if (x == this.pos[0] && y == this.pos[1]) {
-          board += "X"
+          board += "X";
         } else {
           board += ".";
         }
       }
-      board += "\n"
+      board += "\n";
     }
     return board;
   }
 
   drop(shape) {
-    this.pos = [1, 0]
+    if (this.pos[0] == -1 || this.pos[1] == -1) {
+    this.pos = [1, 0];
+    } else {
+      throw "already falling";
+    }
   }
 
   tick() {
