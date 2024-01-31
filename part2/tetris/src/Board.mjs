@@ -7,7 +7,7 @@ export class Board {
   constructor(width, height) {
     this.width = width;
     this.height = height;
-    this.curBlock = { x: -1, y: -1, shape: "." }
+    this.curBlock = { x: 0, y: 0, shape: "." }
     this.blocks = [];
   }
 
@@ -15,10 +15,16 @@ export class Board {
     let board = "";
     for (let y = this.height - 1; y >= 0; y--) {
       for (let x = 0; x < this.width; x++) {
+        let symbol = "."
+        this.blocks.forEach((block) => {
+          if (block.x == x && block.y == y) {
+            symbol = block.shape;        
+          }
+        });
         if (x == this.curBlock.x && y == this.curBlock.y) {
           board += this.curBlock.shape;
         } else {
-          board += ".";
+          board += symbol;
         }
       }
       board += "\n";
@@ -28,6 +34,7 @@ export class Board {
 
   drop(shape) {
     if (this.blocks.length == 0 || !this.hasFalling()) {
+      this.curBlock.y = this.curBlock.y < 0 ? 0 : this.curBlock.y
       this.blocks.push(this.curBlock)
       this.curBlock = { x: (this.width - 1) / 2, y: this.height - 1, shape: shape }
     } else {
@@ -36,7 +43,7 @@ export class Board {
   }
 
   tick() {
-    this.curBlock = { x: this.curBlock.x, y: this.curBlock.y - 1, shape: this.curBlock.shape}
+    this.curBlock = { x: this.curBlock.x, y: this.curBlock.y - 1, shape: this.curBlock.shape }
   }
 
   hasFalling() {
