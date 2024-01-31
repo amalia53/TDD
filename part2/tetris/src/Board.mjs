@@ -26,8 +26,7 @@ export class Board {
 
   drop(shape) {
     if (this.position.x == -1 || this.position.y == -1) {
-    this.pos = [1, 0];
-    this.position = { x: 1, y: 0 }
+      this.position = { x: (this.width - 1) / 2, y: 0 }
     } else {
       throw "already falling";
     }
@@ -42,6 +41,6 @@ export class Board {
   }
 
   convertPos(oldPos) {
-    return {x: this.pos[0], y: this.pos[1]}
+    return { x: this.pos[0], y: this.pos[1] }
   }
 }
