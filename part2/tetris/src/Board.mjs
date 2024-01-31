@@ -6,7 +6,7 @@ export class Board {
   constructor(width, height) {
     this.width = width;
     this.height = height;
-    this.curBlock = { x: -1, y: -1 }
+    this.curBlock = { x: -1, y: -1, shape: "." }
   }
 
   toString() {
@@ -14,7 +14,7 @@ export class Board {
     for (let y = this.height - 1; y >= 0; y--) {
       for (let x = 0; x < this.width; x++) {
         if (x == this.curBlock.x && y == this.curBlock.y) {
-          board += "X";
+          board += this.curBlock.shape;
         } else {
           board += ".";
         }
@@ -26,14 +26,14 @@ export class Board {
 
   drop(shape) {
     if (this.curBlock.x == -1 || this.curBlock.y == -1) {
-      this.curBlock = { x: (this.width - 1) / 2, y: this.height - 1 }
+      this.curBlock = { x: (this.width - 1) / 2, y: this.height - 1, shape: shape }
     } else {
       throw "already falling";
     }
   }
 
   tick() {
-    this.curBlock = { x: this.curBlock.x, y: this.curBlock.y - 1 }
+    this.curBlock = { x: this.curBlock.x, y: this.curBlock.y - 1, shape: this.curBlock.shape}
   }
 
   hasFalling() {
