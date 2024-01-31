@@ -11,7 +11,7 @@ export class Board {
 
   toString() {
     let board = "";
-    for (let y = 0; y < this.height; y++) {
+    for (let y = this.height - 1; y >= 0; y--) {
       for (let x = 0; x < this.width; x++) {
         if (x == this.position.x && y == this.position.y) {
           board += "X";
@@ -26,21 +26,18 @@ export class Board {
 
   drop(shape) {
     if (this.position.x == -1 || this.position.y == -1) {
-      this.position = { x: (this.width - 1) / 2, y: 0 }
+      this.position = { x: (this.width - 1) / 2, y: this.height - 1 }
     } else {
       throw "already falling";
     }
   }
 
   tick() {
-    this.position = { x: this.position.x, y: this.position.y + 1 }
+    this.position = { x: this.position.x, y: this.position.y - 1 }
   }
 
   hasFalling() {
-    return this.position.y < this.height
+    return this.position.y >= 0
   }
 
-  convertPos(oldPos) {
-    return { x: this.pos[0], y: this.pos[1] }
-  }
 }
