@@ -1,19 +1,19 @@
 export class Board {
   width;
   height;
-  position;
+  curBlock;
 
   constructor(width, height) {
     this.width = width;
     this.height = height;
-    this.position = { x: -1, y: -1 }
+    this.curBlock = { x: -1, y: -1 }
   }
 
   toString() {
     let board = "";
     for (let y = this.height - 1; y >= 0; y--) {
       for (let x = 0; x < this.width; x++) {
-        if (x == this.position.x && y == this.position.y) {
+        if (x == this.curBlock.x && y == this.curBlock.y) {
           board += "X";
         } else {
           board += ".";
@@ -25,19 +25,18 @@ export class Board {
   }
 
   drop(shape) {
-    if (this.position.x == -1 || this.position.y == -1) {
-      this.position = { x: (this.width - 1) / 2, y: this.height - 1 }
+    if (this.curBlock.x == -1 || this.curBlock.y == -1) {
+      this.curBlock = { x: (this.width - 1) / 2, y: this.height - 1 }
     } else {
       throw "already falling";
     }
   }
 
   tick() {
-    this.position = { x: this.position.x, y: this.position.y - 1 }
+    this.curBlock = { x: this.curBlock.x, y: this.curBlock.y - 1 }
   }
 
   hasFalling() {
-    return this.position.y >= 0
+    return this.curBlock.y >= 0
   }
-
 }
