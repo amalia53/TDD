@@ -34,6 +34,7 @@ export class Board {
 
   drop(shape) {
     if (this.blocks.length == 0 || !this.hasFalling()) {
+      this.curBlock.y = this.curBlock.y < 0 ? 0 : this.curBlock.y
       this.blocks.push(this.curBlock)
       this.curBlock = { x: (this.width - 1) / 2, y: this.height - 1, shape: shape }
     } else {
