@@ -27,7 +27,7 @@ export class Board {
   }
 
   drop(shape) {
-    if (this.curBlock.x == -1 || this.curBlock.y == -1) {
+    if (this.blocks.length == 0 || !this.hasFalling()) {
       this.blocks.push(this.curBlock)
       this.curBlock = { x: (this.width - 1) / 2, y: this.height - 1, shape: shape }
     } else {
@@ -40,6 +40,14 @@ export class Board {
   }
 
   hasFalling() {
-    return this.curBlock.y >= 0
+    let highestY = 0;
+    this.blocks.forEach((block) => {
+      if (block.x = this.curBlock.x) {
+        if (highestY < block.y) {
+          highestY = block.y;
+        }
+      }
+    });
+    return this.curBlock.y >= highestY;
   }
 }
