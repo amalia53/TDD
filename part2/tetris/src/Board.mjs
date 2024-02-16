@@ -15,7 +15,7 @@ export class Board {
       for (let x = 0; x < this.width; x++) {
         if (this.curBlock[0] == x && this.curBlock[1] == y) {
           board += "X"
-        } else {board += ".";}
+        } else { board += "."; }
       }
       board += "\n";
     }
@@ -24,5 +24,9 @@ export class Board {
 
   drop(shape) {
     this.curBlock = [(this.width - 1) / 2, this.height - 1]
+  }
+
+  tick() {
+    this.curBlock = [this.curBlock[0], this.curBlock[1] - 1]
   }
 }
