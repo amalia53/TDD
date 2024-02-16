@@ -12,10 +12,14 @@ export class Board {
 
   toString() {
     let board = "";
+    let block = this.curBlock;
+    if (this.curBlock[1] < 0) {
+      block = [block[0], 0]
+    }
     for (let y = this.height - 1; y >= 0; y--) {
       for (let x = 0; x < this.width; x++) {
-        if (this.curBlock[0] == x && this.curBlock[1] == y) {
-          board += "X"
+        if (block[0] == x && block[1] == y) {
+          board += this.shape;
         } else { board += "."; }
       }
       board += "\n";
