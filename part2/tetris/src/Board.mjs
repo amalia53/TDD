@@ -1,12 +1,13 @@
 export class Board {
   width;
   height;
-  cutBlock;
+  curBlock;
+  shape;
 
   constructor(width, height) {
     this.width = width;
     this.height = height;
-    this.curBlock = [];
+    this.curBlock = [-1, -1];
   }
 
   toString() {
@@ -23,7 +24,12 @@ export class Board {
   }
 
   drop(shape) {
-    this.curBlock = [(this.width - 1) / 2, this.height - 1]
+    if (this.curBlock[1] < 0) {
+      this.curBlock = [(this.width - 1) / 2, this.height - 1]
+      this.shape = shape;
+    } else {
+      throw "already falling";
+    }
   }
 
   tick() {
