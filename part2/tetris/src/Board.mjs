@@ -24,12 +24,16 @@ export class Board {
   }
 
   drop(shape) {
-    if (this.curBlock[1] < 0) {
+    if (!this.hasFalling()) {
       this.curBlock = [(this.width - 1) / 2, this.height - 1]
       this.shape = shape;
     } else {
       throw "already falling";
     }
+  }
+
+  hasFalling() {
+    return this.curBlock[1] > -1;
   }
 
   tick() {
