@@ -30,7 +30,7 @@ export class Board {
     }
     return board;
   }
-
+  
   drop(shape) {
     if (!this.hasFalling()) {
       this.curBlock = new Block(shape, (this.width - 1) / 2, this.height - 1);
