@@ -29,4 +29,12 @@ export class RotatingShape {
     const newLine3 = this.shape[2][2] + this.shape[1][2] + this.shape[0][2];
     return newLine1 + '\n' + newLine2 + '\n' + newLine3 + '\n';
   }
+
+  rotateLeft() {
+    const newLine1 = this.shape[0][2] + this.shape[1][2] + this.shape[2][2];
+    const newLine2 = this.shape[0][1] + this.shape[1][1] + this.shape[2][1];
+    const newLine3 = this.shape[0][0] + this.shape[1][0] + this.shape[2][0];
+    return newLine1 + '\n' + newLine2 + '\n' + newLine3 + '\n';
+  }
+
 }
