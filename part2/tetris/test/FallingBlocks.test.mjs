@@ -66,11 +66,7 @@ describe("Falling blocks", () => {
     });
 
     test("it stops when it hits the bottom", () => {
-      console.log(board.getCurBlock())
-      console.log(board.getBlocks())
       board.tick();
-      console.log(board.getCurBlock())
-      console.log(board.getBlocks())
 
       expect(board.toString()).to.equalShape(
         `...
