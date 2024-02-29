@@ -10,9 +10,10 @@ export class Block {
     this.shape = shape;
   }
 
-  setY(y) {this.y = y}
+  incrementY() {this.y = this.y - 1}
 
-  y() { return this.y }
-  shape() { return this.shape }
+  getX() { return this.x }
+  getY() { return this.y }
+  getShape() { return this.shape }
 
 }

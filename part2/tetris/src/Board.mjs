@@ -3,24 +3,23 @@ export class Board {
   width;
   height;
   curBlock;
-  shape;
 
   constructor(width, height) {
     this.width = width;
     this.height = height;
-    this.curBlock = [-1, -1];
+    this.curBlock = new Block(".", -1, -1);
   }
 
   toString() {
     let board = "";
     let block = this.curBlock;
-    if (this.curBlock[1] < 0) {
-      block = [block[0], 0]
+    if (this.curBlock.getY() < 0) {
+      block = new Block(block.getShape(), block.getX(), 0)
     }
     for (let y = this.height - 1; y >= 0; y--) {
       for (let x = 0; x < this.width; x++) {
-        if (block[0] == x && block[1] == y) {
-          board += this.shape;
+        if (block.getX() == x && block.getY() == y) {
+          board += block.getShape();
         } else { board += "."; }
       }
       board += "\n";
@@ -30,18 +29,17 @@ export class Board {
 
   drop(shape) {
     if (!this.hasFalling()) {
-      this.curBlock = [(this.width - 1) / 2, this.height - 1]
-      this.shape = shape;
+      this.curBlock = new Block(shape, (this.width - 1) / 2, this.height - 1);
     } else {
       throw "already falling";
     }
   }
 
   hasFalling() {
-    return this.curBlock[1] > -1;
+    return this.curBlock.getY() > -1;
   }
 
   tick() {
-    this.curBlock = [this.curBlock[0], this.curBlock[1] - 1]
+    this.curBlock.incrementY();
   }
 }
