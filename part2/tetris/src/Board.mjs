@@ -3,30 +3,34 @@ export class Board {
   width;
   height;
   curBlock;
+  blocks;
 
   constructor(width, height) {
     this.width = width;
     this.height = height;
-    this.curBlock = new Block(".", -1, -1);
+    this.curBlock = null;
+    this.blocks = [];
   }
 
   toString() {
     let board = "";
-    let block = this.curBlock;
-    if (this.curBlock.getY() < 0) {
-      block = new Block(block.getShape(), block.getX(), 0)
-    }
+    let blocksToString = this.blocks;
+    if (this.curBlock !== null) { blocksToString.push(this.curBlock); }
     for (let y = this.height - 1; y >= 0; y--) {
       for (let x = 0; x < this.width; x++) {
-        if (block.getX() == x && block.getY() == y) {
-          board += block.getShape();
-        } else { board += "."; }
+        let symbol = "."
+        blocksToString.forEach((block) => {
+          if (block.getX() == x && block.getY() == y) {
+            symbol = block.getShape();
+          }
+        });
+        board += symbol;
       }
       board += "\n";
     }
     return board;
   }
-
+  
   drop(shape) {
     if (!this.hasFalling()) {
       this.curBlock = new Block(shape, (this.width - 1) / 2, this.height - 1);
@@ -36,10 +40,15 @@ export class Board {
   }
 
   hasFalling() {
-    return this.curBlock.getY() > -1;
+    return this.curBlock !== null;
   }
 
   tick() {
-    this.curBlock.incrementY();
+    if (this.curBlock.getY() == 0) {
+      this.blocks.push(this.curBlock)
+      this.curBlock = null;
+    } else {
+      this.curBlock.incrementY();
+    }
   }
 }
