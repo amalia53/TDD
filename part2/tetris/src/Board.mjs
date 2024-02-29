@@ -44,11 +44,23 @@ export class Board {
   }
 
   tick() {
-    if (this.curBlock.getY() == 0) {
+    if (this.curBlock.getY() == this.checkHighest(this.curBlock.getX()) + 1) {
       this.blocks.push(this.curBlock)
       this.curBlock = null;
     } else {
       this.curBlock.incrementY();
     }
+  }
+  
+  checkHighest(x) {
+    let highestY = -1;
+    this.blocks.forEach((block) => {
+      if (block.getX() == x) {
+        if (highestY < block.getY()) {
+          highestY = block.getY();
+        }
+      }
+    });
+    return highestY;
   }
 }
