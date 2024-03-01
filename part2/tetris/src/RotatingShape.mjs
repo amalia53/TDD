@@ -35,10 +35,14 @@ export class RotatingShape {
   }
 
   rotateLeft() {
-    const newLine1 = this.shape[0][2] + this.shape[1][2] + this.shape[2][2];
-    const newLine2 = this.shape[0][1] + this.shape[1][1] + this.shape[2][1];
-    const newLine3 = this.shape[0][0] + this.shape[1][0] + this.shape[2][0];
-    return newLine1 + '\n' + newLine2 + '\n' + newLine3 + '\n';
+    let rotated = "";
+    for (let x = 2; x >= 0; x--) {
+      for (let y = 0; y < 3; y++) {
+        rotated += this.shape[y][x]
+      }
+      rotated += '\n';
+    }
+    return rotated;
   }
 
 }
