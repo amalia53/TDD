@@ -24,10 +24,14 @@ export class RotatingShape {
   }
 
   rotateRight() {
-    const newLine1 = this.shape[2][0] + this.shape[1][0] + this.shape[0][0];
-    const newLine2 = this.shape[2][1] + this.shape[1][1] + this.shape[0][1];
-    const newLine3 = this.shape[2][2] + this.shape[1][2] + this.shape[0][2];
-    return newLine1 + '\n' + newLine2 + '\n' + newLine3 + '\n';
+    let rotated = "";
+    for (let x = 0; x < 3; x++) {
+      for (let y = 2; y >= 0; y--) {
+        rotated += this.shape[y][x]
+      }
+      rotated += '\n';
+    }
+    return rotated;
   }
 
   rotateLeft() {
