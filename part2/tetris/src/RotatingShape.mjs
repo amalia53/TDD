@@ -32,20 +32,14 @@ export class RotatingShape {
       for (let y = this.shape.length - 1; y >= 0; y--) {
         rotated += this.shape[y][x]
       }
+      if (x < this.shape.length - 1)
       rotated += '\n';
     }
-    return rotated;
+    return new RotatingShape(rotated);
   }
 
   rotateLeft() {
-    let rotated = "";
-    for (let x = this.shape.length - 1; x >= 0; x--) {
-      for (let y = 0; y < this.shape.length; y++) {
-        rotated += this.shape[y][x]
-      }
-      rotated += '\n';
-    }
-    return rotated;
+    return this.rotateRight().rotateRight().rotateRight();
   }
 
 }
