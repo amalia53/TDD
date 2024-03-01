@@ -14,8 +14,8 @@ export class RotatingShape {
 
   toString() {
     let shapeToString = "";
-    for (let y = 0; y < 3; y++) {
-      for (let x = 0; x < 3; x++) {
+    for (let y = 0; y < this.shape.length; y++) {
+      for (let x = 0; x < this.shape.length; x++) {
         shapeToString += this.shape[y][x]
       }
       shapeToString += '\n';
@@ -25,8 +25,8 @@ export class RotatingShape {
 
   rotateRight() {
     let rotated = "";
-    for (let x = 0; x < 3; x++) {
-      for (let y = 2; y >= 0; y--) {
+    for (let x = 0; x < this.shape.length; x++) {
+      for (let y = this.shape.length - 1; y >= 0; y--) {
         rotated += this.shape[y][x]
       }
       rotated += '\n';
@@ -36,8 +36,8 @@ export class RotatingShape {
 
   rotateLeft() {
     let rotated = "";
-    for (let x = 2; x >= 0; x--) {
-      for (let y = 0; y < 3; y++) {
+    for (let x = this.shape.length - 1; x >= 0; x--) {
+      for (let y = 0; y < this.shape.length; y++) {
         rotated += this.shape[y][x]
       }
       rotated += '\n';
