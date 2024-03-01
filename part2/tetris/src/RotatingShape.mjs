@@ -3,16 +3,21 @@ export class RotatingShape {
   shape;
 
   constructor(shape) {
-    const lines = shape.split('\n');
-    this.shape = [];
+    this.shape = this.fromString(shape);
+  }
+
+  fromString(string) {
+    const lines = string.split('\n');
+    const table = [];
     for (let x = 0; x < lines.length; x++) {
       let lineAsString = lines[x].trim();
       let lineAsList = [];
-      for (let y = 0; y < shape.length; y++) {
+      for (let y = 0; y < lineAsString.length; y++) {
         lineAsList.push(lineAsString[y]);
       }
-      this.shape.push(lineAsList);
+      table.push(lineAsList);
     }
+    return table;
   }
 
   toString() {
@@ -33,7 +38,7 @@ export class RotatingShape {
         rotated += this.shape[y][x]
       }
       if (x < this.shape.length - 1)
-      rotated += '\n';
+        rotated += '\n';
     }
     return new RotatingShape(rotated);
   }
