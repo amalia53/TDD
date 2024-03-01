@@ -4,12 +4,15 @@ export class RotatingShape {
 
   constructor(shape) {
     const lines = shape.split('\n');
-    const line1 = lines[0].trim();
-    const line2 = lines[1].trim();
-    const line3 = lines[2].trim();
-    this.shape = [[line1[0], line1[1], line1[2]],
-    [line2[0], line2[1], line2[2]],
-    [line3[0], line3[1], line3[2]]];
+    this.shape = [];
+    for (let x = 0; x < lines.length; x++) {
+      let lineAsString = lines[x].trim();
+      let lineAsList = [];
+      for (let y = 0; y < shape.length; y++) {
+        lineAsList.push(lineAsString[y]);
+      }
+      this.shape.push(lineAsList);
+    }
   }
 
   toString() {
