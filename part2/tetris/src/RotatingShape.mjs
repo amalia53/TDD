@@ -1,6 +1,6 @@
 export class RotatingShape {
 
-  shape;
+  static shape;
 
   constructor(shape) {
     this.shape = this.fromString(shape);
