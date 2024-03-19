@@ -2,6 +2,7 @@
 import { describe, test } from "vitest";
 import { expect } from "chai";
 import { Tetromino } from "../src/Tetromino.mjs";
+import { RotatingShape } from "../src/RotatingShape.mjs";
 
 function distinctOrientations(shape) {
   const distinct = new Set();
@@ -27,7 +28,7 @@ describe("The T shape", () => {
     );
   });
 
-  test.skip("can be rotated right/clockwise", () => {
+  test("can be rotated right/clockwise", () => {
     expect(shape.rotateRight().toString()).to.equalShape(
       `.T.
        .TT
