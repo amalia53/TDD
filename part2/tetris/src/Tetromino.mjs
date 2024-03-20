@@ -1,9 +1,11 @@
 import { RotatingShape } from "./RotatingShape.mjs";
 export class Tetromino {
 
-  static T_SHAPE = Tetromino.fromString(`.T.\nTTT\n...`, 4, 0);
+  static T_SHAPE = Tetromino.fromString(`.T.\nTTT\n...s`, 4, 0);
 
   static I_SHAPE = Tetromino.fromString(`.....\n.....\nIIII.\n.....\n.....`, 2, 0);
+
+  static O_SHAPE = Tetromino.fromString(`.OO\n.OO\n...`, 1, 0)
 
   orientations;
   curOrientation;
