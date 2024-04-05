@@ -1,4 +1,5 @@
 import { Block } from "./Block.mjs";
+import { Tetromino } from "./Tetromino.mjs";
 export class Board {
   width;
   height;
@@ -13,7 +14,8 @@ export class Board {
   }
 
   toString() {
-    let board = "";
+    let board = [Array.from({length: this.width}, () => ",")];
+    let boardAsString = "";
     let blocksToString = this.blocks;
     if (this.curBlock !== null) { blocksToString.push(this.curBlock); }
     for (let y = this.height - 1; y >= 0; y--) {
@@ -24,11 +26,11 @@ export class Board {
             symbol = block.getShape();
           }
         });
-        board += symbol;
+        boardAsString += symbol;
       }
-      board += "\n";
+      boardAsString += "\n";
     }
-    return board;
+    return boardAsString;
   }
   
   drop(shape) {
