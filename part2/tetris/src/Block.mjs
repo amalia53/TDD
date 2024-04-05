@@ -12,8 +12,4 @@ export class Block {
 
   incrementY() {this.y = this.y - 1}
 
-  getX() { return this.x }
-  getY() { return this.y }
-  getShape() { return this.shape }
-
 }

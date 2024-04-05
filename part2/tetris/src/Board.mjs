@@ -48,7 +48,7 @@ export class Board {
   }
 
   tick() {
-    if (this.curBlock.getY() == this.checkHighest(this.curBlock.getX()) + 1) {
+    if (this.curBlock.y == this.checkHighest(this.curBlock.x) + 1) {
       this.blocks.push(this.curBlock)
       this.curBlock = null;
     } else {
@@ -59,9 +59,9 @@ export class Board {
   checkHighest(x) {
     let highestY = -1;
     this.blocks.forEach((block) => {
-      if (block.getX() == x) {
-        if (highestY < block.getY()) {
-          highestY = block.getY();
+      if (block.x == x) {
+        if (highestY < block.y) {
+          highestY = block.y;
         }
       }
     });
