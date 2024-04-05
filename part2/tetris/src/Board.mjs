@@ -13,26 +13,28 @@ export class Board {
     this.blocks = [];
   }
 
+  getCurBlock() { return this.curBlock }
+
   toString() {
-    let board = [Array.from({length: this.width}, () => ",")];
+    let board = new Array();
+    for (let i = 0; i < this.height; i++) {
+      board[i] = Array.from({ length: this.width }, () => ".");
+    }
     let boardAsString = "";
     let blocksToString = this.blocks;
     if (this.curBlock !== null) { blocksToString.push(this.curBlock); }
+    blocksToString.forEach((block) => {
+      board[block.x][block.y] = block.shape
+    });
     for (let y = this.height - 1; y >= 0; y--) {
       for (let x = 0; x < this.width; x++) {
-        let symbol = "."
-        blocksToString.forEach((block) => {
-          if (block.getX() == x && block.getY() == y) {
-            symbol = block.getShape();
-          }
-        });
-        boardAsString += symbol;
+        boardAsString += board[x][y];
       }
       boardAsString += "\n";
     }
     return boardAsString;
   }
-  
+
   drop(shape) {
     if (!this.hasFalling()) {
       this.curBlock = new Block(shape, (this.width - 1) / 2, this.height - 1);
@@ -53,7 +55,7 @@ export class Board {
       this.curBlock.incrementY();
     }
   }
-  
+
   checkHighest(x) {
     let highestY = -1;
     this.blocks.forEach((block) => {
